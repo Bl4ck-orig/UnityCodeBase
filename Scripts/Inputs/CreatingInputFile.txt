@@ -1,0 +1,8 @@
+1. Get the package "Input System" from package manager
+2. "Project Settings > Player > Other Settings > Configuration > Active Input Handling*" einstellen
+3. Right click in Inputs Folder > Create > Input Actions
+4. Name it "PlayerInputs"
+5. Control Scheme > "Mouse" & "KeyBoard"
+6. Create Input "LeftMouseButton" in Mouse
+7. Create Input "Up" in KeyBoard
+8. Check "Generate C# Class" on the PlayerInputs File in the inspector and click apply
