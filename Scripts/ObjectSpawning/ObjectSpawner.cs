@@ -10,19 +10,6 @@ namespace ObjectSpawning
 
     public class ObjectSpawner : MonoBehaviour
     {
-        public const int POOL_SIZE_WEAPONS = 20;
-        public const int POOL_SIZE_GHOULS_PER_RACE = 50;
-        public const int POOL_SIZE_PROJECTILE = 20;
-        public const int POOL_SIZE_FOOD = 20;
-        public const int POOL_SIZE_MANA = 20;
-        public const int POOL_SIZE_FIRE = 20;
-        public const int POOL_SIZE_BUILDINGS_PER_TYPE = 20;
-        public const int POOL_SIZE_DESTINATION_DISPLAY = 20;
-        public const int POOL_SIZE_SPELLS_PER_TYPE = 20;
-        public const int POOL_SIZE_HIT_PARTICLES_PER_TYPE = 50;
-
-
-
         public static Vector3 PoolingObjectDeactivatePosition { get; set; } = new Vector3(-1000, -1000, -1000);
         private static int idCounter = 0;
         private static string className = nameof(ObjectSpawner);
