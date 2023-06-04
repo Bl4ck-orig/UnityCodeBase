@@ -126,10 +126,6 @@ namespace GameManaging
         #endregion -----------------------------------------------------------------
 
         #region Scene Loading -----------------------------------------------------------------
-        private void LoadLevelEditor() =>  OnLoadScene(EScene.LevelEditor, SO_SceneConfig.FirstScene(EScene.LevelEditor).SceneName);
-
-        private void LoadSandboxIngame() =>  OnLoadScene(EScene.SinglePlayer, SO_SceneConfig.FirstScene(EScene.SinglePlayer).SceneName);
-
         private void LoadMainMenu() => OnLoadScene(EScene.MainMenu, SO_SceneConfig.FirstScene(EScene.MainMenu).SceneName);
 
         public void OnLoadScene(EScene _sceneType, string _sceneName)
