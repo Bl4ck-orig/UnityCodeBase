@@ -73,6 +73,20 @@ namespace SceneManagement
             return instance.GetFirstScene(_sceneTpye);
         }
 
+        public static SceneDetails Scene(EScene _sceneTpye, int _id)
+        {
+            if (instance == null)
+                throw new NullReferenceException("Instance has not been set!");
+            return instance.GetScene(_sceneTpye, _id);
+        }
+
+        public static bool NextScene(out SceneDetails _details)
+        {
+            if (instance == null)
+                throw new NullReferenceException("Instance has not been set!");
+            return instance.GetNextScene(out _details);
+        }
+
         public static string AllScenesString()
         {
             string output = "";
@@ -142,10 +156,6 @@ namespace SceneManagement
             SceneDetails scene = new SceneDetails(GetNextId(), _sceneName, _path, _sceneType);
 
             UpdateScene(scene);
-
-            //RemoveAllScenesWithName(_sceneName);
-            //
-            //GetScenesOfType(_sceneType).Add(scene);
         }
 
         private int GetNextId()
@@ -154,19 +164,6 @@ namespace SceneManagement
             if (allScenes.Count() == 0)
                 return 0;
             return allScenes.Max(y => y.Id) + 1;
-        }
-
-        private void RemoveAllScenesWithName(string _name)
-        {
-            for(int i = 0; i < sceneDetails.Count; i++)
-            {
-                List<SceneDetails> scenesWithName = sceneDetails[i].Scenes.Where(x => x.SceneName == _name).ToList();
-                
-                if (scenesWithName.Count == 0)
-                    continue;
-
-                scenesWithName.ForEach(x => sceneDetails[i].Scenes.Remove(x));                
-            }
         }
 
         private void UpdateScene(SceneDetails _sceneDetails)
@@ -247,6 +244,28 @@ namespace SceneManagement
 
         private SceneDetails GetFirstScene(EScene _sceneType) => GetScenesOfType(_sceneType).First();
 
+        private SceneDetails GetScene(EScene _sceneType, int _id)
+        {
+            List<SceneDetails> scenes = GetScenesOfType(_sceneType);
+            if(_id >= scenes.Count)
+                throw new ArgumentException("Scene with id \"" + _id + "\" not found for type \"" + _sceneType + "\".");
+
+            return scenes[_id];
+        }
+
+        private bool GetNextScene(out SceneDetails _details)
+        {
+            try
+            {
+                _details = GetScene(currentScene.SceneType, currentScene.Id + 1);
+                return true;
+            }
+            catch (ArgumentException)
+            {
+                _details = null;
+                return false;
+            }
+        }
         #region Handle Data -----------------------------------------------------------------
 #if (UNITY_EDITOR)
         /// <summary>
@@ -283,4 +302,3 @@ namespace SceneManagement
         #endregion -----------------------------------------------------------------
     }
 }
-
