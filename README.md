@@ -1,11 +1,11 @@
 # UnityCodeBase
 Common utilities for unity projects that I found to be useful in all my recent projects.
 
+<hr>
+
 In debugging is a DebugManager. By calling the DebugManagers Logging methods, output can be filtered and easily deactivated.
 
 In the FSM folder is a generic state machine concept. It is very robust. Can also be found here <a href="https://github.com/Bl4ck-orig/GenericStateMachineHandler">Generic State Machine Handler</a>.
-
-<hr>
 
 In GameManaging is a Gamemanager as statemachine that I found to be useful.
 
